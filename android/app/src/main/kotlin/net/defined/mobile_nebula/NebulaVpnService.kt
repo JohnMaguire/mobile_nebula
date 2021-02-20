@@ -47,8 +47,7 @@ class NebulaVpnService : VpnService() {
         val id = intent?.getStringExtra("id")
         
         if (running) {
-            announceExit(id, "Trying to run nebula but it is already running")
-            //TODO: can we signal failure?
+            // this occurs as a race, bail out
             return super.onStartCommand(intent, flags, startId)
         }
 
